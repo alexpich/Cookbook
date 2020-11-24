@@ -20,7 +20,7 @@ export const fetchRecipes = () => {
       for (const key in resData) {
         loadedRecipes.push(
           new Recipe(
-            key,
+            resData[key].recipeId,
             resData[key].recipeName,
             resData[key].recipeDescription,
             resData[key].recipeImageUrl,

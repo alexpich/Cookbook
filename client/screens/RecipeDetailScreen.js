@@ -25,11 +25,9 @@ const ListItem = (props) => {
 const RecipeDetailScreen = (props) => {
   const recipeId = props.navigation.getParam("recipeId");
 
-  const availableRecipes = useSelector((state) => state.recipes.recipes);
+  const recipes = useSelector((state) => state.recipes.recipes);
 
-  const selectedRecipe = availableRecipes.find(
-    (recipe) => recipe.id === recipeId
-  );
+  const selectedRecipe = recipes.find((recipe) => recipe.recipeId === recipeId);
 
   const dispatch = useDispatch();
 
@@ -50,23 +48,25 @@ const RecipeDetailScreen = (props) => {
           style={styles.image}
         >
           <View style={styles.details}>
-            <DefaultWhiteText>{selectedRecipe.duration}m</DefaultWhiteText>
+            {/* <DefaultWhiteText>{selectedRecipe.duration}m</DefaultWhiteText> */}
+            <DefaultWhiteText>Time M</DefaultWhiteText>
             <DefaultWhiteText>
-              {selectedRecipe.complexity.toUpperCase()}
+              {/* {selectedRecipe.complexity.toUpperCase()} */}calories?
             </DefaultWhiteText>
           </View>
         </ImageBackground>
       </View>
 
-      <Text style={styles.title}>Ingredients</Text>
-      {selectedRecipe.ingredients.map((ingredient) => (
-        <ListItem key={ingredient}>{ingredient}</ListItem>
-      ))}
+      {/* <Text style={styles.title}>Ingredients</Text>
+{selectedRecipe.ingredients.map((ingredient) => (
+  <ListItem key={ingredient}>{ingredient}</ListItem>
+))} */}
       {/* TODO: Add a play button to the right and pull up the tutorial video */}
-      <Text style={styles.title}>Steps</Text>
-      {selectedRecipe.steps.map((step) => (
-        <ListItem key={step}>{step}</ListItem>
-      ))}
+      {/* <Text style={styles.title}>Steps</Text>
+{selectedRecipe.steps.map((step) => (
+  <ListItem key={step}>{step}</ListItem>
+))} */}
+
     </ScrollView>
   );
 };

@@ -20,10 +20,10 @@ export const fetchCategories = () => {
       for (const key in resData) {
         loadedCategories.push(
           new Category(
-            key,
+            resData[key].categoryId,
             resData[key].categoryName,
-            resData[key].categoryImageUrl,
-            resData[key].recipes
+            resData[key].categoryImageUrl
+            // resData[key].recipes
           )
         );
       }

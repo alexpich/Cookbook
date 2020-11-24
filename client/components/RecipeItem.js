@@ -17,7 +17,7 @@ const RecipeItem = (props) => {
           <ImageBackground source={{ uri: props.image }} style={styles.bgImage}>
             <View style={{ ...styles.recipeRow, ...styles.recipeHeader }}>
               <Text style={styles.title} numberOfLines={1}>
-                {props.title}
+                {props.recipeName}
               </Text>
             </View>
             <View style={{ ...styles.recipeRow, ...styles.recipeDetail }}>

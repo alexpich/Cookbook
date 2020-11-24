@@ -6,8 +6,8 @@ const RecipeList = (props) => {
   const renderRecipeItem = (itemData) => {
     return (
       <RecipeItem
-        title={itemData.item.name}
-        image={itemData.item.imageUrl}
+        recipeName={itemData.item.recipeName}
+        image={itemData.item.recipeImageUrl}
         // duration={itemData.item.duration}
         // complexity={itemData.item.complexity}
         onSelectRecipe={() => {
@@ -16,6 +16,8 @@ const RecipeList = (props) => {
             params: {
               recipeId: itemData.item.recipeId,
               recipeName: itemData.item.recipeName,
+              recipeDescription: itemData.item.recipeDescription,
+              recipeImageUrl: itemData.item.recipeImageUrl,
             },
           });
         }}
