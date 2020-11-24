@@ -9,18 +9,18 @@ import {
 
 import DefaultWhiteText from "./DefaultWhiteText";
 
-const MealItem = (props) => {
+const RecipeItem = (props) => {
   return (
-    <View style={styles.mealItem}>
-      <TouchableOpacity onPress={props.onSelectMeal}>
+    <View style={styles.recipeItem}>
+      <TouchableOpacity onPress={props.onSelectRecipe}>
         <View>
           <ImageBackground source={{ uri: props.image }} style={styles.bgImage}>
-            <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
+            <View style={{ ...styles.recipeRow, ...styles.recipeHeader }}>
               <Text style={styles.title} numberOfLines={1}>
                 {props.title}
               </Text>
             </View>
-            <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
+            <View style={{ ...styles.recipeRow, ...styles.recipeDetail }}>
               {/* <DefaultWhiteText>{props.duration}m</DefaultWhiteText>
               <DefaultWhiteText>{props.complexity.toUpperCase()}</DefaultWhiteText> */}
               <DefaultWhiteText>15m</DefaultWhiteText>
@@ -34,7 +34,7 @@ const MealItem = (props) => {
 };
 
 const styles = StyleSheet.create({
-  mealItem: {
+  recipeItem: {
     height: 400,
     width: "100%",
     backgroundColor: "#0a0a0a",
@@ -43,10 +43,10 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
-  mealRow: {
+  recipeRow: {
     flexDirection: "row",
   },
-  mealHeader: {
+  recipeHeader: {
     height: "90%",
     padding: 10,
   },
@@ -55,10 +55,10 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: "white",
   },
-  mealDetail: {
+  recipeDetail: {
     paddingHorizontal: 10,
     justifyContent: "space-between",
   },
 });
 
-export default MealItem;
+export default RecipeItem;

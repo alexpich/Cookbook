@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import MealList from "../components/MealList";
+import RecipeList from "../components/RecipeList";
 
 const FavoritesScreen = (props) => {
-  const favMeals = useSelector((state) => state.meals.favoriteMeals);
+  const favRecipes = useSelector((state) => state.recipes.favoriteRecipes);
 
-  return <MealList listData={favMeals} navigation={props.navigation} />;
+  return <RecipeList listData={favRecipes} navigation={props.navigation} />;
 };
 
 FavoritesScreen.navigationOptions = {

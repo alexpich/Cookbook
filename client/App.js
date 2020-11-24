@@ -7,14 +7,14 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import ReduxThunk from "redux-thunk";
 
-import MealsNavigator from "./navigation/MealsNavigator";
-import mealsReducer from "./store/reducers/meals";
+import RecipesNavigator from "./navigation/RecipesNavigator";
+import recipesReducer from "./store/reducers/recipes";
 import categoriesReducer from "./store/reducers/categories";
 
 enableScreens();
 
 const rootReducer = combineReducers({
-  meals: mealsReducer,
+  recipes: recipesReducer,
   categories: categoriesReducer,
 });
 
@@ -41,7 +41,7 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <MealsNavigator />
+      <RecipesNavigator />
     </Provider>
   );
 }

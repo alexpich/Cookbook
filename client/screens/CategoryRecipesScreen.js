@@ -2,34 +2,34 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { View, ActivityIndicator, StyleSheet } from "react-native";
 
-import * as mealActions from "../store/actions/meals";
-import MealList from "../components/MealList";
+import * as recipeActions from "../store/actions/recipes";
+import RecipeList from "../components/RecipeList";
 import Colors from "../constants/Colors";
 
-const CategoryMealScreen = (props) => {
+const CategoryRecipeScreen = (props) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const meals = useSelector((state) => state.meals.meals);
+  const recipes = useSelector((state) => state.recipes.recipes);
   const dispatch = useDispatch();
 
   const catId = props.navigation.getParam("categoryId");
 
-  // We can use this one if we have filteredMeals set up later.
-  // const availableMeals = useSelector((state) => state.filteredMeals);
-  // const availableMeals = useSelector((state) => state.meals.meals);
+  // We can use this one if we have filteredRecipes set up later.
+  // const availableRecipes = useSelector((state) => state.filteredRecipes);
+  // const availableRecipes = useSelector((state) => state.recipes.recipes);
 
-  // TODO: FIX BACKEND SO THAT EACH MEAL/RECIPE HAS A CATEGORY ID. this should work afterwards.
-  // const displayedMeals = meals.filter(
-  //   (meal) => meal.categoryIds.indexOf(catId) >= 0
+  // TODO: FIX BACKEND SO THAT EACH RECIPE HAS A CATEGORY ID. this should work afterwards.
+  // const displayedRecipes = recipes.filter(
+  //   (recipe) => recipe.categoryIds.indexOf(catId) >= 0
   // );
 
-  const displayedMeals = availableMeals.filter(
-    (meal) => meal.categoryIds.indexOf(catId) >= 0
+  const displayedRecipes = availableRecipes.filter(
+    (recipe) => recipe.categoryIds.indexOf(catId) >= 0
   );
 
   useEffect(() => {
     setIsLoading(true);
-    dispatch(mealActions.fetchMeals()).then(() => {
+    dispatch(recipeActions.fetchRecipes()).then(() => {
       setIsLoading(false);
     });
   }, [dispatch]);
@@ -42,10 +42,10 @@ const CategoryMealScreen = (props) => {
     );
   }
 
-  return <MealList listData={meals} navigation={props.navigation} />;
+  return <RecipeList listData={recipes} navigation={props.navigation} />;
 };
 
-// CategoryMealScreen.navigationOptions = (navigationData) => {
+// CategoryRecipeScreen.navigationOptions = (navigationData) => {
 //   const catId = navigationData.navigation.getParam("categoryId");
 
 //   const selectedCategory = CATEGORIES.find((cat) => cat.id === catId);
@@ -58,4 +58,4 @@ const styles = StyleSheet.create({
   centered: { flex: 1, justifyContent: "center", alignItems: "center" },
 });
 
-export default CategoryMealScreen;
+export default CategoryRecipeScreen;
