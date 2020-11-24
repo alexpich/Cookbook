@@ -12,4 +12,4 @@ Built with React Native.
 
 ## Backend
 
-Built with Spring Boot.
+Built with Spring Boot. Using a SQL database.
