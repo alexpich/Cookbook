@@ -12,7 +12,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import HeaderButton from "../components/HeaderButton";
 import DefaultWhiteText from "../components/DefaultWhiteText";
-import { toggleFavorite } from "../store/actions/meals";
+import { toggleFavorite } from "../store/actions/recipes";
 
 const ListItem = (props) => {
   return (
@@ -22,18 +22,18 @@ const ListItem = (props) => {
   );
 };
 
-const MealDetailScreen = (props) => {
-  const mealId = props.navigation.getParam("mealId");
+const RecipeDetailScreen = (props) => {
+  const recipeId = props.navigation.getParam("recipeId");
 
-  const availableMeals = useSelector((state) => state.meals.meals);
+  const recipes = useSelector((state) => state.recipes.recipes);
 
-  const selectedMeal = availableMeals.find((meal) => meal.id === mealId);
+  const selectedRecipe = recipes.find((recipe) => recipe.recipeId === recipeId);
 
   const dispatch = useDispatch();
 
   const toggleFavoriteHandler = useCallback(() => {
-    dispatch(toggleFavorite(mealId));
-  }, [dispatch, mealId]);
+    dispatch(toggleFavorite(recipeId));
+  }, [dispatch, recipeId]);
 
   useEffect(() => {
     // Forward these params named toggleFav to the navigation options
@@ -44,38 +44,40 @@ const MealDetailScreen = (props) => {
     <ScrollView>
       <View>
         <ImageBackground
-          source={{ uri: selectedMeal.imageUrl }}
+          source={{ uri: selectedRecipe.recipeImageUrl }}
           style={styles.image}
         >
           <View style={styles.details}>
-            <DefaultWhiteText>{selectedMeal.duration}m</DefaultWhiteText>
+            {/* <DefaultWhiteText>{selectedRecipe.duration}m</DefaultWhiteText> */}
+            <DefaultWhiteText>Time M</DefaultWhiteText>
             <DefaultWhiteText>
-              {selectedMeal.complexity.toUpperCase()}
+              {/* {selectedRecipe.complexity.toUpperCase()} */}calories?
             </DefaultWhiteText>
           </View>
         </ImageBackground>
       </View>
 
-      <Text style={styles.title}>Ingredients</Text>
-      {selectedMeal.ingredients.map((ingredient) => (
-        <ListItem key={ingredient}>{ingredient}</ListItem>
-      ))}
+      {/* <Text style={styles.title}>Ingredients</Text>
+{selectedRecipe.ingredients.map((ingredient) => (
+  <ListItem key={ingredient}>{ingredient}</ListItem>
+))} */}
       {/* TODO: Add a play button to the right and pull up the tutorial video */}
-      <Text style={styles.title}>Steps</Text>
-      {selectedMeal.steps.map((step) => (
-        <ListItem key={step}>{step}</ListItem>
-      ))}
+      {/* <Text style={styles.title}>Steps</Text>
+{selectedRecipe.steps.map((step) => (
+  <ListItem key={step}>{step}</ListItem>
+))} */}
+
     </ScrollView>
   );
 };
 
-MealDetailScreen.navigationOptions = (navigationData) => {
-  const mealTitle = navigationData.navigation.getParam("mealTitle");
+RecipeDetailScreen.navigationOptions = (navigationData) => {
+  const recipeName = navigationData.navigation.getParam("recipeName");
   const toggleFavorite = navigationData.navigation.getParam("toggleFav");
-  // const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+  // const selectedRecipe = RECIPES.find((recipe) => recipe.id === recipeId);
 
   return {
-    headerTitle: mealTitle,
+    headerTitle: recipeName,
     headerRight: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
@@ -116,4 +118,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MealDetailScreen;
+export default RecipeDetailScreen;

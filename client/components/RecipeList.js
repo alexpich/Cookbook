@@ -1,21 +1,23 @@
 import React from "react";
 import { View, FlatList, StyleSheet } from "react-native";
-import MealItem from "./MealItem";
+import RecipeItem from "./RecipeItem";
 
-const MealList = (props) => {
-  const renderMealItem = (itemData) => {
+const RecipeList = (props) => {
+  const renderRecipeItem = (itemData) => {
     return (
-      <MealItem
-        title={itemData.item.name}
-        image={itemData.item.imageUrl}
+      <RecipeItem
+        recipeName={itemData.item.recipeName}
+        image={itemData.item.recipeImageUrl}
         // duration={itemData.item.duration}
         // complexity={itemData.item.complexity}
-        onSelectMeal={() => {
+        onSelectRecipe={() => {
           props.navigation.navigate({
-            routeName: "MealDetail",
+            routeName: "RecipeDetail",
             params: {
-              mealId: itemData.item.id,
-              mealTitle: itemData.item.title,
+              recipeId: itemData.item.recipeId,
+              recipeName: itemData.item.recipeName,
+              recipeDescription: itemData.item.recipeDescription,
+              recipeImageUrl: itemData.item.recipeImageUrl,
             },
           });
         }}
@@ -27,7 +29,7 @@ const MealList = (props) => {
     <View style={styles.screen}>
       <FlatList
         data={props.listData}
-        renderItem={renderMealItem}
+        renderItem={renderRecipeItem}
         style={{ width: "100%" }}
       />
     </View>
@@ -42,4 +44,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MealList;
+export default RecipeList;

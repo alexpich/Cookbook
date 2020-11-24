@@ -20,15 +20,14 @@ const CategoriesScreen = (props) => {
   }, [dispatch]);
 
   const renderGridItem = (itemData) => {
-    console.log(itemData);
     return (
       <CategoryGridTile
-        title={itemData.item.title}
-        imageUrl={itemData.item.imageUrl}
+        title={itemData.item.categoryName}
+        imageUrl={itemData.item.categoryImageUrl}
         onSelect={() => {
           props.navigation.navigate({
-            routeName: "CategoryMeals",
-            params: { categoryId: itemData.item.id },
+            routeName: "CategoryRecipes",
+            params: { categoryId: itemData.item.categoryId },
           });
         }}
       />
@@ -44,7 +43,12 @@ const CategoriesScreen = (props) => {
   }
 
   return (
-    <FlatList data={categories} renderItem={renderGridItem} numColumns={2} />
+    <FlatList
+      data={categories}
+      renderItem={renderGridItem}
+      numColumns={2}
+      keyExtractor={(renderGridItem, index) => index.toString()}
+    />
   );
 };
 

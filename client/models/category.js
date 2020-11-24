@@ -1,8 +1,10 @@
 class Category {
-  constructor(id, title, imageUrl) {
-    this.id = id;
-    this.title = title;
-    this.imageUrl = imageUrl;
+  // constructor(categoryId, categoryName, categoryImageUrl, recipes) {
+  constructor(categoryId, categoryName, categoryImageUrl) {
+    this.categoryId = categoryId;
+    this.categoryName = categoryName;
+    this.categoryImageUrl = categoryImageUrl;
+    // this.recipes = recipes;
   }
 }
 
