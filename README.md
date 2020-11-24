@@ -2,7 +2,7 @@
 
 This project is actively being worked on!
 
-The goal of this mobile app is to help users learn how to cook any type of meal. As a person learning to cook, I constantly wondered if there were an easier way to dice my onions or to quickly chop scallions. With this app, we can thorougly explain each step of the cooking process as well as demonstrating little video clips on how to do each step as to prevent any confusion!
+The goal of this mobile app is to help users learn how to cook, easily and efficiently. As a person learning to cook, I constantly wondered if there were better ways to dice my onions or quickly chop scallions. Normally you would pull up YouTube, search how to do something, watch the video, then have to wash your hands all over again before you begin touching your food once more. With this app, recipes will have a short video clip demonstrating each step of the way.
 
 ## Client
 
