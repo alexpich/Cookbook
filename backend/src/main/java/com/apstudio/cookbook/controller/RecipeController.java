@@ -35,4 +35,5 @@ public class RecipeController {
 	public ResponseEntity<?> getRecipeById(@PathVariable Long recipeId) {
 		return new ResponseEntity<>(recipeService.getRecipeById(recipeId), HttpStatus.OK);
 	}
+	
 }
