@@ -2,6 +2,7 @@ package com.apstudio.cookbook.service;
 
 import com.apstudio.cookbook.model.Category;
 import com.apstudio.cookbook.model.Recipe;
+import com.apstudio.cookbook.repository.CategoryRepository;
 import com.apstudio.cookbook.repository.RecipeRepository;
 
 import java.util.ArrayList;
@@ -18,6 +19,9 @@ public class RecipeService {
 	private RecipeRepository recipeRepo;
 
 	@Autowired
+	private CategoryRepository catRepo;
+
+	@Autowired
 	private CategoryService catService;
 
 	// POST ONE
@@ -26,11 +30,14 @@ public class RecipeService {
 		newRecipe.setRecipeName(recipe.getRecipeName());
 		newRecipe.setRecipeImageUrl(recipe.getRecipeImageUrl());
 		newRecipe.setRecipeDescription(recipe.getRecipeDescription());
+
+		// Gets all categories and adds them to the new recipe
 		newRecipe.getCategories().addAll(recipe.getCategories().stream().map(c -> {
 			Category cc = catService.getCategoryById(c.getCategoryId());
 			cc.getRecipes().add(newRecipe);
 			return cc;
 		}).collect(Collectors.toList()));
+
 		return recipeRepo.save(newRecipe);
 	}
 
