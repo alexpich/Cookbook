@@ -18,9 +18,12 @@ const CategoryRecipesScreen = (props) => {
   // const availableRecipes = useSelector((state) => state.filteredRecipes);
   // const availableRecipes = useSelector((state) => state.recipes.recipes);
 
-  // TODO: FIX BACKEND SO THAT EACH RECIPE HAS A CATEGORY ID. this should work afterwards.
+  // TODO:  Each recipe now has an array of categories
+  // filter though each recipe, and look the recipe's categories, and look at each categoryId in the categories array. Then check if the recipe's categoryId == the selected categoryId
   const displayedRecipes = recipes.filter(
-    (recipe) => recipe.categories.indexOf(catId) >= 0
+    // (recipe) => recipe.categories.indexOf(catId) >= 0
+    // (recipe) => recipe.categories.indexOf(recipe.categories.categoryId) == catId
+    (recipe) => recipe.categories.categoryId == catId
   );
 
   // const displayedRecipes = availableRecipes.filter(
@@ -29,7 +32,6 @@ const CategoryRecipesScreen = (props) => {
 
   useEffect(() => {
     setIsLoading(true);
-    console.log(catId);
     dispatch(recipeActions.fetchRecipes()).then(() => {
       setIsLoading(false);
     });
@@ -43,7 +45,11 @@ const CategoryRecipesScreen = (props) => {
     );
   }
 
-  return <RecipeList listData={recipes} navigation={props.navigation} />;
+  return (
+    // TODO: refactor displayedRecipes to receive filtered recipes by categoryId on the backend. For now we will just display all recipes.
+    // <RecipeList listData={displayedRecipes} navigation={props.navigation} />
+    <RecipeList listData={recipes} navigation={props.navigation} />
+  );
 };
 
 // TODO: fix this so we get the category id as a Header title
