@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
-
 public class Recipe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
